@@ -1,5 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
+
 
 type Doctor = {
     id: number;
@@ -51,9 +53,11 @@ export default function DoctorsPage() {
                     >
                         <div className="flex items-center mb-4">
                             {/* Circular Profile Photo with Dynamic Border Color */}
-                            <img
+                            <Image
                                 src={doctor.profilePic || defaultProfilePic}
                                 alt={doctor.name}
+                                width={50} // Set the width explicitly
+                                height={50}
                                 className={`w-16 h-16 rounded-full object-cover border-4 ${getStatusBorderColor(
                                     doctor.status
                                 )}`}
@@ -67,10 +71,10 @@ export default function DoctorsPage() {
                             Status:{' '}
                             <span
                                 className={`font-semibold ${doctor.status === 'Available'
-                                        ? 'text-green-500'
-                                        : doctor.status === 'Busy'
-                                            ? 'text-red-500'
-                                            : 'text-yellow-500'
+                                    ? 'text-green-500'
+                                    : doctor.status === 'Busy'
+                                        ? 'text-red-500'
+                                        : 'text-yellow-500'
                                     }`}
                             >
                                 {doctor.status}

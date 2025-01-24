@@ -1,5 +1,8 @@
 'use client';
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
+
+
 
 type Doctor = {
     id: number;
@@ -192,11 +195,16 @@ export default function AppointmentManagementPage() {
                             {/* Doctor Info */}
                             <div className="flex items-center gap-2">
                                 {/* Doctor Profile Picture */}
-                                <img
-                                    src={appointment.doctorProfilePic}
+                                <Image
+                                    src={appointment.doctorProfilePic || '/default-profile.png'} // Use the correct property
                                     alt={appointment.doctorName}
-                                    className="w-10 h-10 rounded-full border border-gray-300 object-cover"
+                                    width={50} // Set the width explicitly
+                                    height={50} // Set the height explicitly
+                                    className="rounded-full object-cover"
                                 />
+
+
+
                                 <div>
                                     <p className="text-gray-500">{appointment.doctorName}</p>
                                     {/* Time Icon and Time */}
